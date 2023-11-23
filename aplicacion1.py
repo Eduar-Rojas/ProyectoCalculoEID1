@@ -10,7 +10,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 
 # Definir la función de la curva
@@ -49,3 +48,27 @@ ax.set_title("Antena Parabólica")
 
 # Mostrar la gráfica
 plt.show()
+
+
+from scipy.integrate import quad
+import numpy as np
+
+
+# Definir la función de la curva
+def f(x, a):
+    return 0.1 * x**2 + 0.5 * x + a
+
+
+# Función para la integración numérica
+def integrando(x, a):
+    return np.pi * f(x, a) ** 2
+
+
+# Elegir un valor para 'a'
+a_value = 2
+
+# Calcular el volumen utilizando la integración numérica
+volumen, error = quad(integrando, 0, 5, args=(a_value,))
+
+# Mostrar el resultado
+print(f"El volumen de la antena es: {volumen}π unidades cúbicas")
