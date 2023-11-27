@@ -52,34 +52,39 @@ plt.ylabel('y')
 plt.grid(True)#activa la grilla
 plt.show()#mostrar grafico
 #---------------------------------------
+#ejercicio 3 solido de revolucion
+#librerias usadas
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-
-#función para el sólido de revolución
+#Se define la funcion a graficar
 def f(x):
     return x**2
 
+#Genera datos para la función
+x = np.linspace(0, 2, 100)
+y = f(x)
 
-x_values = np.linspace(0, 2, 100)#crea el valor x
+# Genera datos para la rotación en 3D del grafico
+theta = np.linspace(0, 2*np.pi, 100)
+x_3d = np.outer(x, np.cos(theta))
+y_3d = np.outer(x, np.sin(theta))
+z_3d = np.outer(np.ones_like(x), y)
 
-
-y_values = f(x_values)#calcula valores y de la función
-
-
-fig = plt.figure()#crea una figura
-ax = fig.add_subplot(111, projection='3d')#en 3D
-
+fig = plt.figure()#crea la figura
+ax = fig.add_subplot(111, projection='3d')#y la rotacion en 3D
 
 # Graficar el sólido de revolución
-ax.plot(x_values, y_values, zs=0, zdir='z', label='Sólido de Revolución')
+ax.plot_surface(x_3d, y_3d, z_3d, color='lightblue', alpha=0.8)
 
-
-# Configuración visual del gráfico
-ax.set_xlabel('X')#configuracion de los ejes x,y,z
+# Etiquetas de los ejes
+ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
-ax.legend()# activa legendas
-ax.set_title('Sólido de Revolución en 3D')
 
+# Título del gráfico
+ax.set_title('Sólido de Revolución')
 
-plt.show()#muestra el gráfico
-
+# Mostrar el gráfico
+plt.show()
