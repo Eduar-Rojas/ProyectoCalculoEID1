@@ -8,14 +8,14 @@ def f(x):
 def parabola(x, a, b, c):
     return a * x**2 + b * x + c
 
-def encontrar_vertice(params):
-    a, b, c = params
+def encontrar_vertice(param):
+    a, b, c = param
     h = -b / (2 * a)
     k = parabola(h, a, b, c)
     return k
 
-params_iniciales = [0.1, 0.5, 0.625]
-resultado = minimize(encontrar_vertice, params_iniciales)
+parametros = [0.1, 0.5, 0.625]
+resultado = minimize(encontrar_vertice, parametros)
 a_optimo, b_optimo, c_optimo = resultado.x
 
 x = np.linspace(0, 5, 100)
