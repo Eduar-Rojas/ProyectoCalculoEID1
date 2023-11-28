@@ -10,3 +10,4 @@ D = sp.integrate(T_t, (t, 0, 6))
 
 # Se imprime el resultado
 print(f"La cantidad total de datos transferidos en los primeros 6 segundos es: {D} kilobits.")
+#solucion al problema

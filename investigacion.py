@@ -10,7 +10,7 @@ fx = sp.tan(5*x)**2#variable de la funcion
 resultado = sp.integrate(fx, x)# se integra con sympy
 print("El resultado de la integral Indefinida es: ")
 sp.pprint(resultado)#se impreme el resultado
-
+#----------------------------------------------------------------
 #b)
 x= sp.symbols('x')#variable simbolica referencias a x
 fx2 = sp.cos(2*x)#variable de la funcion
