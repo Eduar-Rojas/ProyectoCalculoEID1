@@ -11,37 +11,28 @@ def SB(n):
 def difference_function(n):
     return SB(n) - SA(n)
 
-# Crear un rango de valores de n en el intervalo [0, 1000]
-n_values = np.arange(0, 1001, 1)
+n_valor = np.arange(0, 1001, 1)
 
-# Calcular las tasas de éxito para cada valor de n
-success_rate_SA = SA(n_values)
-success_rate_SB = SB(n_values)
+Exito_SA = SA(n_valor)
+Exito_SB = SB(n_valor)
 
-# Calcular el área bajo la curva de la diferencia entre SA(n) y SB(n)
 area, _ = integrate.quad(difference_function, 0, 1000)
 
-# Aproximar el valor del área a tres decimales
 area_aproximada = round(area, 3)
 print(f"Área entre las curvas (aproximada): {area_aproximada}")
 
-# Graficar las tasas de éxito
 plt.figure(figsize=(10, 6))
-plt.plot(n_values, success_rate_SA, label='SA(n) = 0.1n + 30')
-plt.plot(n_values, success_rate_SB, label='SB(n) = 0.05n^2 + 10n + 40')
+plt.plot(n_valor, Exito_SA, label='SA(n) = 0.1n + 30')
+plt.plot(n_valor, Exito_SB, label='SB(n) = 0.05n^2 + 10n + 40')
 
-# Sombrear el área entre las curvas con un color celeste claro
-plt.fill_between(n_values, success_rate_SA, success_rate_SB, color='lightblue', alpha=0.5, label='Área entre curvas')
+plt.fill_between(n_valor, Exito_SA, Exito_SB, color='lightblue', alpha=0.5, label='Área entre curvas')
 
-# Agregar etiquetas y leyenda
 plt.title('Tasas de éxito de los algoritmos SA y SB con Área entre curvas')
 plt.xlabel('Tamaño del conjunto (n)')
 plt.ylabel('Tasa de éxito')
 plt.legend()
 
-# Mostrar el valor del área en el gráfico (un poco más arriba)
 plt.text(500, 10000, f'Área = {area_aproximada}', fontsize=12, bbox=dict(facecolor='white', alpha=0.5))
 
-# Mostrar la gráfica
 plt.grid(True)
 plt.show()
